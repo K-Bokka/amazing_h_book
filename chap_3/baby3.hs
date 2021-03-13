@@ -77,3 +77,9 @@ cylinder r h =
 describeList :: [a] -> String
 describeList ls = "This list is "
     ++ case ls of [] -> "empty"; [_] -> "a singleton list."; _ -> "a loger list."
+
+describeList' :: [a] -> String
+describeList' ls = "This list is " ++ what ls
+    where what [] = "empty"
+          what [_] = "a singleton list."
+          what _ = "a loger list."
