@@ -44,9 +44,7 @@ bmiTell'' weight height
     | bmi <= fat = "You're fat"
     | otherwise = "You're a whale"
     where bmi = weight / (height * height)
-          skinny = 18.5
-          normal = 25.0
-          fat = 30.0
+          (skinny, normal, fat) = (18.5, 25.0, 30.0)
 
 badGreeting :: String
 badGreeting = "Oh! Pfft. "
