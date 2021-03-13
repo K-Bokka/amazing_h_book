@@ -18,3 +18,7 @@ factorial n = n * factorial (n -1)
 head' :: [a] -> a
 head' [] = error "Can't call head on an empty"
 head' (x:_) = x
+
+firstLetter :: String -> String
+firstLetter "" = "Empty String!"
+firstLetter st@(x:_) = "The first letter of " ++ st ++ " is " ++ [x]
