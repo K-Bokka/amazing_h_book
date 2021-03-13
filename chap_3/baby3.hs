@@ -60,3 +60,9 @@ greet name = badGreeting ++ name
 calcBmis :: [(Double, Double)] -> [Double]
 calcBmis xs = [bmi w h | (w, h) <- xs]
     where bmi weight height = weight / (height * height)
+
+cylinder :: Double -> Double -> Double
+cylinder r h =
+    let sideArea = 2 * pi * r * h
+        topArea = pi * r * r
+    in  sideArea + 2 * topArea
