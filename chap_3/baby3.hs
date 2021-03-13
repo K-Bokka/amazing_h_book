@@ -73,3 +73,7 @@ cylinder r h =
     let sideArea = 2 * pi * r * h
         topArea = pi * r * r
     in  sideArea + 2 * topArea
+
+describeList :: [a] -> String
+describeList ls = "This list is "
+    ++ case ls of [] -> "empty"; [_] -> "a singleton list."; _ -> "a loger list."
