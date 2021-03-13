@@ -56,3 +56,7 @@ greet :: String -> String
 greet st@"Juan" = niceGreeting ++ st
 greet st@"Fernando" = niceGreeting ++ st
 greet name = badGreeting ++ name
+
+calcBmis :: [(Double, Double)] -> [Double]
+calcBmis xs = [bmi w h | (w, h) <- xs]
+    where bmi weight height = weight / (height * height)
