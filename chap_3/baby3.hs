@@ -47,3 +47,14 @@ bmiTell'' weight height
           skinny = 18.5
           normal = 25.0
           fat = 30.0
+
+badGreeting :: String
+badGreeting = "Oh! Pfft. "
+
+niceGreeting :: String
+niceGreeting = "Hello! "
+
+greet :: String -> String
+greet st@"Juan" = niceGreeting ++ st
+greet st@"Fernando" = niceGreeting ++ st
+greet name = badGreeting ++ name
