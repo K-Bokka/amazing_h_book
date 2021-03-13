@@ -61,6 +61,9 @@ calcBmis :: [(Double, Double)] -> [Double]
 calcBmis xs = [bmi w h | (w, h) <- xs]
     where bmi weight height = weight / (height * height)
 
+calcBmis' :: [(Double, Double)] -> [Double]
+calcBmis' xs = [bmi | (w, h) <- xs, let bmi = w / (h * h)]
+
 cylinder :: Double -> Double -> Double
 cylinder r h =
     let sideArea = 2 * pi * r * h
