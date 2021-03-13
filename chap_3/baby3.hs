@@ -22,3 +22,10 @@ head' (x:_) = x
 firstLetter :: String -> String
 firstLetter "" = "Empty String!"
 firstLetter st@(x:_) = "The first letter of " ++ st ++ " is " ++ [x]
+
+bmiTell :: Double -> String
+bmiTell bmi
+    | bmi <= 18.5 = "You're underweight."
+    | bmi <= 25.0 = "You're supposedly normal."
+    | bmi <= 30.0 = "You're fat"
+    | otherwise = "You're a whale"
