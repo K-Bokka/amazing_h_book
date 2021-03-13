@@ -29,3 +29,10 @@ bmiTell bmi
     | bmi <= 25.0 = "You're supposedly normal."
     | bmi <= 30.0 = "You're fat"
     | otherwise = "You're a whale"
+
+bmiTell' :: Double -> Double -> String
+bmiTell' weight height
+    | weight / (height * height) <= 18.5 = "You're underweight."
+    | weight / (height * height) <= 25.0 = "You're supposedly normal."
+    | weight / (height * height) <= 30.0 = "You're fat"
+    | otherwise = "You're a whale"
