@@ -48,3 +48,6 @@ chain n
 numLongChain :: Int
 numLongChain = length (filter isLong (map chain [1..100]))
     where isLong xs = length xs > 15
+
+numLongChain' :: Int
+numLongChain' = length (filter (\xs -> length xs > 15) (map chain [1..100]))
