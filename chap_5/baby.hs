@@ -36,3 +36,11 @@ quicksort (x:xs) =
 largestDivisible :: Integer
 largestDivisible = head (filter p [100000,999999..])
     where p x = mod x 3829 == 0
+
+chain :: Integer -> [Integer]
+chain 0 = error "Zeros cannot be specified in the Collatz sequence.."
+chain 1 = [1]
+chain n
+    | even n = n : chain (div n 2)
+    | odd n  = n : chain (n * 3 + 1)
+    | otherwise = error "This integer is not even or odd. what???"
