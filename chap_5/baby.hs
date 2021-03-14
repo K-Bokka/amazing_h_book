@@ -32,3 +32,7 @@ quicksort (x:xs) =
     let smallerOrEqual = filter (<= x) xs
         lager = filter (> x) xs
     in quicksort smallerOrEqual ++ [x] ++ quicksort lager
+
+largestDivisible :: Integer
+largestDivisible = head (filter p [100000,999999..])
+    where p x = mod x 3829 == 0
