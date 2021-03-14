@@ -78,3 +78,9 @@ filter' p = foldr (\x acc -> if p x then x : acc else acc) []
 
 last' :: [a] -> a
 last' = foldl1 (\_ x -> x)
+
+oddSquareSum :: Integer
+oddSquareSum = sum (takeWhile (<10000) (filter odd (map (^ (2 :: Integer)) [1..])))
+
+oddSquareSum' :: Integer
+oddSquareSum' = sum . takeWhile (<10000) . filter odd $ map (^ (2 :: Integer)) [1..]
