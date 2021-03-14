@@ -11,3 +11,6 @@ multiTwoWithNine = multiThree' 9
 
 divideByTen :: (Floating a) => a -> a
 divideByTen = (/10)
+
+isUpperAlphabet :: Char -> Bool
+isUpperAlphabet = (`elem` ['A'..'Z'])
