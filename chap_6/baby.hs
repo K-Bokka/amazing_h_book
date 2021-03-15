@@ -1,6 +1,6 @@
 {-# OPTIONS -Wall -Werror #-}
 
-import Data.List hiding (sort)
+import Data.List
 import qualified Data.Map.Strict as M
 
 numUniques :: (Eq a) => [a] -> Int
@@ -11,3 +11,6 @@ fruits = [("apple",1),("orange",2),("banana",3),("peach",4),("cherry",5),("orang
 
 fruitsMap :: M.Map String Int
 fruitsMap = M.fromList fruits
+
+wordNums :: String -> [(String, Int)]
+wordNums = map (\ws -> (head ws, length ws)) . group . sort . words
