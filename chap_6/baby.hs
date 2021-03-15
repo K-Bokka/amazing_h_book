@@ -30,3 +30,13 @@ digitSum = sum . map digitToInt . show
 
 firstTo :: Int -> Maybe Int
 firstTo n = find (\x -> digitSum x == n) [1..]
+
+phoneBook :: [(String, String)]
+phoneBook =
+    [("betty", "1234-5678")
+    ,("bonny", "2234-5678")
+    ,("pasty", "3234-5678")
+    ]
+
+findKey :: (Eq k) => k -> [(k, v)] -> v
+findKey key xs = snd . head . filter (\(k, _) -> key == k) $ xs
