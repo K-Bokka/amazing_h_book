@@ -14,3 +14,6 @@ fruitsMap = M.fromList fruits
 
 wordNums :: String -> [(String, Int)]
 wordNums = map (\ws -> (head ws, length ws)) . group . sort . words
+
+isIn :: (Eq a) => [a] -> [a] -> Bool
+isIn needle haystack = any (needle `isPrefixOf`) (tails haystack)
