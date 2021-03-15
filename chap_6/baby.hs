@@ -1,17 +1,11 @@
 {-# OPTIONS -Wall -Werror #-}
 
 import Data.List
-import qualified Data.Map.Strict as M
+import qualified Data.Map.Strict as Map
 import Data.Char
 
 numUniques :: (Eq a) => [a] -> Int
 numUniques = length . nub
-
-fruits::[(String,Int)]
-fruits = [("apple",1),("orange",2),("banana",3),("peach",4),("cherry",5),("orange",6),("apple",7),("peach",8)]
-
-fruitsMap :: M.Map String Int
-fruitsMap = M.fromList fruits
 
 wordNums :: String -> [(String, Int)]
 wordNums = map (\ws -> (head ws, length ws)) . group . sort . words
@@ -31,11 +25,14 @@ digitSum = sum . map digitToInt . show
 firstTo :: Int -> Maybe Int
 firstTo n = find (\x -> digitSum x == n) [1..]
 
-phoneBook :: [(String, String)]
-phoneBook =
-    [("betty", "1234-5678")
-    ,("bonny", "2234-5678")
-    ,("pasty", "3234-5678")
+phoneBook :: Map.Map String String
+phoneBook = Map.fromList $
+    [("betty", "555-2938")
+    ,("bonnie", "452-2928")
+    ,("patsy", "493-2928")
+    ,("lucille", "205-2928")
+    ,("wendy", "939-8282")
+    ,("penny", "853-2492")
     ]
 
 findKey :: (Eq k) => k -> [(k, v)] -> v
@@ -49,3 +46,4 @@ findKey' key ((k, v):xs)
 
 findKey'' :: (Eq k) => k -> [(k, v)] -> Maybe v
 findKey'' key xs = foldr (\(k, v) acc -> if key == k then Just v else acc) Nothing xs
+
