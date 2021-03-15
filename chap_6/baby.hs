@@ -2,6 +2,7 @@
 
 import Data.List
 import qualified Data.Map.Strict as M
+import Data.Char
 
 numUniques :: (Eq a) => [a] -> Int
 numUniques = length . nub
@@ -17,3 +18,9 @@ wordNums = map (\ws -> (head ws, length ws)) . group . sort . words
 
 isIn :: (Eq a) => [a] -> [a] -> Bool
 isIn needle haystack = any (needle `isPrefixOf`) (tails haystack)
+
+encode :: Int -> String -> String
+encode offset msg = map (\c -> chr $ ord c + offset) msg
+
+decode :: Int -> String -> String
+decode shift msg = encode (negate shift) msg
