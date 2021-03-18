@@ -1,8 +1,8 @@
 {-# OPTIONS -Wall -Werror #-}
 
 module Shapes
-( Point(..)
-, Shape(..)
+( Point
+, Shape
 , area
 , nudge
 , baseCircle
