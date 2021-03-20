@@ -28,3 +28,9 @@ data Person' = Person' {
   , phoneNumber' :: String
   , flavor' :: String
 } deriving Show
+
+data Person'' = Person'' { firstName'' :: String
+                         , lastName'' :: String
+                         , age'' :: Int
+                         } deriving Eq
+
