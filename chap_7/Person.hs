@@ -32,7 +32,7 @@ data Person' = Person' {
 data Person'' = Person'' { firstName'' :: String
                          , lastName'' :: String
                          , age'' :: Int
-                         } deriving Eq
+                         } deriving (Eq, Show, Read)
 
 mikeD :: Person''
 mikeD = Person'' "Michael" "Diamond" 43
