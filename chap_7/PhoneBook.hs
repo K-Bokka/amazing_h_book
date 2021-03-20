@@ -10,5 +10,8 @@ phoneBook =
     ,("penny", "853-2492")
     ]
 
-type PhoneBook = [(String, String)]
+type PhoneNumber = String
 
+type Name = String
+
+type PhoneBook = [(Name, PhoneNumber)]
