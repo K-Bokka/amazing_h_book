@@ -34,3 +34,9 @@ data Person'' = Person'' { firstName'' :: String
                          , age'' :: Int
                          } deriving Eq
 
+mikeD :: Person''
+mikeD = Person'' "Michael" "Diamond" 43
+adRock :: Person''
+adRock = Person'' "Adam" "Horovitz" 41
+mca :: Person''
+mca = Person'' "Adam" "Yauch" 44
