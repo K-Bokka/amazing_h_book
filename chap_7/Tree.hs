@@ -22,3 +22,7 @@ treeElem x (Node a left right)
     | x < a  = treeElem x left
     | x > a  = treeElem x right
 treeElem _ _ = error "The second argument must be a Tree type."
+
+instance Functor Tree where
+    fmap _ EmptyTree = EmptyTree
+    fmap f (Node x left right) = Node (f x) (fmap f left) (fmap f right)
