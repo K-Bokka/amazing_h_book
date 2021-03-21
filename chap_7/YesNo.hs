@@ -28,3 +28,6 @@ instance YesNo (Tree a) where
 instance YesNo TrafficLight where
     yn Red = False
     yn _ = True
+
+ynIf :: (YesNo y) => y -> a -> a -> a
+ynIf val yes no = if yn val then yes else no
