@@ -1,6 +1,8 @@
 {-# OPTIONS -Wall -Werror #-}
 
+import Data.Char
+
 main :: IO ()
 main = do
     contents <- readFile "baabaa.txt"
-    putStr contents
+    writeFile "baabaacaps.txt" (map toUpper contents)
