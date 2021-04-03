@@ -8,3 +8,6 @@ threeCoins gen =
         (secondCoin, newGen') = random newGen
         (thirdCoin, _) = random newGen'
     in (firstCoin, secondCoin, thirdCoin)
+
+randoms' :: (RandomGen g, Random a) => g -> [a]
+randoms' gen = let (value, newGen) = random gen in value:randoms' newGen
