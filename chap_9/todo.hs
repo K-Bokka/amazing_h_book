@@ -1,4 +1,4 @@
---{-# OPTIONS -Wall -Werror #-}
+{-# OPTIONS -Wall -Werror #-}
 
 import System.Environment
 import System.Directory
@@ -11,9 +11,14 @@ dispatch "add" = add
 dispatch "view" = view
 dispatch "remove" = remove
 dispatch "bump" = bump
+dispatch command = doesntExists command
+
+doesntExists :: String -> [String] -> IO ()
+doesntExists command _ = putStrLn $ "The " ++ command ++ " command dosen't exist"
 
 add :: [String] -> IO ()
 add [fileName, todoItem] = appendFile fileName (todoItem ++ "\n")
+add _ = putStrLn $ "The add command takes exactly filename and task"
 
 view :: [String] -> IO ()
 view [fileName] = do
@@ -21,6 +26,7 @@ view [fileName] = do
     let todoTasks = lines contents
         numberedTasks = zipWith (\n line -> show (n:: Integer) ++ " - " ++ line) [0..] todoTasks
     putStr $ unlines numberedTasks
+view _ = putStrLn $ "The view command takes exactly filename"
 
 remove :: [String] -> IO ()
 remove [fileName, numberString] = do
@@ -40,6 +46,7 @@ remove [fileName, numberString] = do
             hClose tempHandle
             removeFile fileName
             renameFile tempName fileName)
+remove _ = putStrLn $ "The remove command takes exactly filename and task number"
 
 bump :: [String] -> IO ()
 bump [fileName, numberString] = do
@@ -61,7 +68,9 @@ bump [fileName, numberString] = do
             renameFile tempName fileName)
     putStrLn "Bumped TO-DO items:"
     mapM_ putStrLn numberedTasks
+bump _ = putStrLn $ "The bump command takes exactly filename and task number"
 
+main :: IO ()
 main = do
     (command:argList) <- getArgs
     dispatch command argList
