@@ -10,6 +10,7 @@ dispatch :: String -> [String] -> IO ()
 dispatch "add" = add
 dispatch "view" = view
 dispatch "remove" = remove
+dispatch "bump" = bump
 
 add :: [String] -> IO ()
 add [fileName, todoItem] = appendFile fileName (todoItem ++ "\n")
@@ -39,6 +40,27 @@ remove [fileName, numberString] = do
             hClose tempHandle
             removeFile fileName
             renameFile tempName fileName)
+
+bump :: [String] -> IO ()
+bump [fileName, numberString] = do
+    contents <- readFile fileName
+    let todoTasks = lines contents
+        number = read numberString
+        bumpTodoItem = todoTasks !! number
+        newTodoTasks = bumpTodoItem : (delete bumpTodoItem todoTasks)
+        numberedTasks = zipWith (\n line -> show (n:: Integer) ++ " - " ++ line) [0..] newTodoTasks
+        newTodoItems = unlines newTodoTasks
+    bracketOnError (openTempFile "." "temp")
+        (\(tempName, tempHandle) -> do
+            hClose tempHandle
+            removeFile tempName)
+        (\(tempName, tempHandle) -> do
+            hPutStr tempHandle newTodoItems
+            hClose tempHandle
+            removeFile fileName
+            renameFile tempName fileName)
+    putStrLn "Bumped TO-DO items:"
+    mapM_ putStrLn numberedTasks
 
 main = do
     (command:argList) <- getArgs
