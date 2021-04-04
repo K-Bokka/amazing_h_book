@@ -1,6 +1,6 @@
 {-# OPTIONS -Wall -Werror #-}
 
-data Section = Section { getA :: Int, getB :: Int, getC :: Int } deriving (Show)
+data Section = Section { getA :: Int, getB :: Int, getC :: Int } deriving Show
 
 type RoadSystem = [Section]
 
@@ -10,3 +10,8 @@ heathrowToLondon = [ Section 50 10 30
                    , Section 40 2 25
                    , Section 10 8 0
                    ]
+
+data Label = A | B | C deriving Show
+type Path = [(Label, Int)]
+
+--optimalPath :: RoadSystem -> Path
