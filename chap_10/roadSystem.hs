@@ -14,7 +14,12 @@ heathrowToLondon = [ Section 50 10 30
 data Label = A | B | C deriving Show
 type Path = [(Label, Int)]
 
---optimalPath :: RoadSystem -> Path
+optimalPath :: RoadSystem -> Path
+optimalPath roadSystem =
+    let (bestA, bestB) = foldl roadStep ([], []) roadSystem
+    in if (sum $ map snd bestA) <= (sum $ map snd bestB)
+       then reverse bestA
+       else reverse bestB
 
 roadStep :: (Path, Path) -> Section -> (Path, Path)
 roadStep (pathA, pathB) (Section a b c) =
