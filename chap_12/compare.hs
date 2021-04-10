@@ -7,3 +7,9 @@ lightCompare x y = let a = length x `compare` length y
 
 lightCompare' :: String -> String -> Ordering
 lightCompare' x y = (length x `compare` length y) `mappend` (x `compare` y)
+
+lightCompare'' :: String -> String -> Ordering
+lightCompare'' x y = (length x `compare` length y) `mappend`
+                     (vowels x `compare` vowels y) `mappend`
+                     (x `compare` y)
+                 where vowels = length . filter (`elem` "aiueo")
