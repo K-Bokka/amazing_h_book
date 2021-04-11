@@ -19,3 +19,6 @@ sevensOnly = do
     x <- [1..50]
     guard ('7' `elem` show x)
     return x
+
+(<=<) :: (Monad m) => (b -> m c) -> (a -> m b) -> (a -> m c)
+f <=< g = (\x -> g x >>= f)
