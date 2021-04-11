@@ -26,3 +26,6 @@ in3 start = do
 
 in3' :: KnightPos -> [KnightPos]
 in3' start = return start >>= moveKnight >>= moveKnight >>= moveKnight
+
+canReachIn3 :: KnightPos -> KnightPos -> Bool
+canReachIn3 start end = elem end $ in3 start
