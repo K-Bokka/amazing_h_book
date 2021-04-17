@@ -1,5 +1,7 @@
 {-# OPTIONS -Wall -Werror #-}
 
+module DiffList where
+
 newtype DiffList a = DiffList { getDiffList :: [a] -> [a] }
 
 toDiffList :: [a] -> DiffList a
