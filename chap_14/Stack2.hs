@@ -26,3 +26,10 @@ stackStuff = do
         else do
             push 3
             push 8
+
+moreStack :: State Stack2 ()
+moreStack = do
+    a <- stackMan
+    if a == 100
+        then stackStuff
+        else return ()
