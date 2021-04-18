@@ -11,7 +11,7 @@ instance Functor Prob where
 
 instance Applicative Prob where
     pure x = Prob [(x, 1%1)]
-    (Prob fs) <*> (Prob xs) = Prob [(f x, r) | (f, _) <- fs, (x, r) <- xs]
+    (Prob fs) <*> (Prob xs) = Prob [(f x, xr*fr) | (f, fr) <- fs, (x, xr) <- xs]
 
 instance Monad Prob where
     m >>= f = flatten (fmap f m)
