@@ -1,5 +1,7 @@
 {-# OPTIONS -Wall -Werror #-}
 
+module Prob where
+
 import Data.Ratio
 
 newtype Prob a = Prob { getProb :: [(a, Rational)] } deriving Show
