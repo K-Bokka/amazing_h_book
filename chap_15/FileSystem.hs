@@ -1,5 +1,7 @@
 {-# OPTIONS -Wall -Werror #-}
 
+module FileSystem where
+
 type Name = String
 type Data = String
 data FSItem = File Name Data | Folder Name [FSItem] deriving (Show)
