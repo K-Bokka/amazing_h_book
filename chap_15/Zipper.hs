@@ -11,3 +11,7 @@ modify _ (Empty, bs) = (Empty, bs)
 
 attach :: Tree a -> Zipper a -> Zipper a
 attach t (_, bs) = (t, bs)
+
+topMost :: Zipper a -> Zipper a
+topMost (t, []) = (t, [])
+topMost z = topMost (goUp z)
