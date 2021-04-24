@@ -1,5 +1,8 @@
 {-# OPTIONS -Wall -Werror #-}
 
+(-:) :: a -> (a -> b) -> b
+x -: f = f x
+
 data Tree a = Empty | Node a (Tree a) (Tree a) deriving (Show)
 
 changeToP :: Tree Char -> Tree Char
