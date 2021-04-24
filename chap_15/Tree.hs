@@ -21,6 +21,16 @@ elemAt (R:ds) (Node _ _ r) = elemAt ds r
 elemAt [] (Node x _ _) = x
 elemAt _ Empty = error "It's a dead end!"
 
+type Breadcrumbs = [Direction]
+
+goLeft :: (Tree a, Breadcrumbs) -> (Tree a, Breadcrumbs)
+goLeft (Node _ l _, bs) = (l, L:bs)
+goLeft (Empty, _) = error "It's a dead end!"
+
+goRight :: (Tree a, Breadcrumbs) -> (Tree a, Breadcrumbs)
+goRight (Node _ _ r, bs) = (r, R:bs)
+goRight (Empty, _) = error "It's a dead end!"
+
 freeTree :: Tree Char
 freeTree =
     Node 'P'
