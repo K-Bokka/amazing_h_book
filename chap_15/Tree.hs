@@ -15,6 +15,12 @@ changeToP' (R:ds) (Node x l r) = Node x l (changeToP' ds r)
 changeToP' [] (Node _ l r) = Node 'P' l r
 changeToP' _ Empty = error "It's a dead end!"
 
+elemAt :: Directions -> Tree Char -> Char
+elemAt (L:ds) (Node _ l _) = elemAt ds l
+elemAt (R:ds) (Node _ _ r) = elemAt ds r
+elemAt [] (Node x _ _) = x
+elemAt _ Empty = error "It's a dead end!"
+
 freeTree :: Tree Char
 freeTree =
     Node 'P'
