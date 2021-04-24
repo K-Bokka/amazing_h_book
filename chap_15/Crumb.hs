@@ -1,4 +1,6 @@
 {-# OPTIONS -Wall -Werror #-}
+module Crumb where
+
 import Tree
 
 data Crumb a = LeftCrumb a (Tree a)
